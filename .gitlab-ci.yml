@@ -1,0 +1,29 @@
+stages:
+  - analyze
+
+variables:
+  AGENT_NAME: "technical-debt-hunter"
+
+technical-debt-analysis:
+  stage: analyze
+  image: registry.gitlab.com/gitlab-org/duo-agent-platform/runner:latest
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: always
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: always
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: always
+  variables:
+    DUO_AGENT_NAME: "technical-debt-hunter"
+    DUO_AGENT_SKILL: "technical-debt"
+    DUO_PROJECT_ID: "$CI_PROJECT_ID"
+    DUO_MR_IID: "$CI_MERGE_REQUEST_IID"
+  script:
+    - "echo 'Triggering Technical Debt Hunter agent...'"
+    - "echo Agent: $DUO_AGENT_NAME"
+    - "echo Skill: $DUO_AGENT_SKILL"
+    - "echo Project: $DUO_PROJECT_ID"
+    - "echo MR IID: $DUO_MR_IID"
+  allow_failure: true
+  timeout: 10 minutes

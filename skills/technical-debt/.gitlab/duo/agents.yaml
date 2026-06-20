@@ -1,0 +1,24 @@
+agent:
+  name: technical-debt-hunter
+  description: >
+    Automatically identifies, prioritizes, and surfaces technical debt
+    inside GitLab repositories using Orbit structural intelligence.
+    Detects large files, circular dependencies, dead code, and missing
+    tests — then creates actionable GitLab issues automatically.
+  prompt_file: AGENTS.md
+  tools:
+    # --- Orbit Tools (primary source of structural intelligence) ---
+    - orbit:query_graph
+    - orbit:get_file_dependencies
+    - orbit:get_dependency_graph
+    - orbit:get_change_hotspots
+    - orbit:get_file_complexity
+
+    # --- GitLab Built-in Tools ---
+    - gitlab:search
+    - gitlab:read_file
+    - gitlab:create_issue
+    - gitlab:list_issues
+    - gitlab:create_mr_note
+    - gitlab:build_review_merge_request_context
+    - gitlab:ci_linter

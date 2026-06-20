@@ -1,0 +1,35 @@
+instructions:
+  - name: Large Files Detection
+    fileFilters:
+      - "**/*.*"
+    instructions: |
+      1. Identify files exceeding 500 lines
+      2. Explain maintainability risks
+      3. Suggest modularization
+
+  - name: Complexity Detection
+    fileFilters:
+      - "**/*.js"
+      - "**/*.ts"
+      - "**/*.py"
+    instructions: |
+      1. Flag functions longer than 50 lines
+      2. Detect deep nesting (>3 levels)
+      3. Recommend simplification
+
+  - name: Missing Tests
+    fileFilters:
+      - "!**/*.test.*"
+      - "!**/*.spec.*"
+    instructions: |
+      1. Identify critical logic without tests
+      2. Explain risks of untested code
+      3. Suggest adding unit tests
+
+  - name: General Maintainability
+    fileFilters:
+      - "**/*"
+    instructions: |
+      1. Highlight tightly coupled modules
+      2. Suggest improving separation of concerns
+      3. Explain the "why" behind each recommendation

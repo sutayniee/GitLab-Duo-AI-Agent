@@ -186,13 +186,15 @@ Run the agent and watch GitLab issues appear automatically.
 
 ## Contributors
 
-* Your Team Name Here
+Lumampao, Eugene S.
+Villamil, Paul lewis J.
+Rodriguez, Lebron James
 
 ---
 
 ## License
 
-MIT (or specify your license)
+MIT License
 
 ---
 

@@ -186,9 +186,12 @@ Run the agent and watch GitLab issues appear automatically.
 
 ## Contributors
 
-Lumampao, Eugene S.
-Villamil, Paul lewis J.
-Rodriguez, Lebron James
+* Lumampao, Eugene S.
+* Villamil, Paul lewis J.
+* Rodriguez, Lebron James
+
+# Special Thanks to
+* Haban, Charrisa Althea I.
 
 ---
 

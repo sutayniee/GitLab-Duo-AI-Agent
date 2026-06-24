@@ -1,93 +1,201 @@
-# 39282514
+# Technical Debt Hunter
 
-Transcend Hackathon Showcase workspace for @eugene.lumampao (DevPost: eugene-lumampao). Visit the [onboarding issue](https://gitlab.com/gitlab-ai-hackathon/transcend/39282514/-/work_items/1) to get started.
+### AI-Powered GitLab Agent using GitLab Orbit
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Overview
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+**Technical Debt Hunter** is an AI-powered GitLab Duo Agent that automatically detects technical debt in your repository and creates actionable GitLab issues instantly.
 
-## Add your files
-
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Instead of manually auditing codebases, developers can run a single command:
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/gitlab-ai-hackathon/transcend/39282514.git
-git branch -M main
-git push -uf origin main
+Analyze technical debt
 ```
 
-## Integrate with your tools
+and receive automatically generated issues highlighting the most critical problems.
 
-* [Set up project integrations](https://gitlab.com/gitlab-ai-hackathon/transcend/39282514/-/settings/integrations)
+---
 
-## Collaborate with your team
+## Problem
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+Developers often inherit or work in large, evolving codebases where:
 
-## Test and Deploy
+* Risky modules are difficult to identify
+* Large, complex files go unnoticed
+* Missing tests are overlooked
+* High coupling increases fragility
 
-Use the built-in continuous integration in GitLab.
+Manual analysis is:
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+* Time-consuming
+* Inconsistent
+* Easy to ignore
 
-***
+---
 
-# Editing this README
+## Solution
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Technical Debt Hunter uses **GitLab Orbit** to understand your repository structure and automatically:
 
-## Suggestions for a good README
+* Identifies technical debt
+* Prioritizes high-impact issues
+* Generates clear, actionable GitLab issues
+* Integrates directly into developer workflows
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+---
 
-## Name
-Choose a self-explaining name for your project.
+## How It Works
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### 1. Trigger the Agent
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+```
+Analyze technical debt
+```
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+---
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### 2. Query GitLab Orbit
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+The agent retrieves structured repository data such as:
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+* File sizes and line counts
+* Dependency relationships
+* Test coverage indicators
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+---
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### 3. Analyze Technical Debt
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+The system detects:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+* Large files greater than 500 lines
+* Files without tests
+* Highly coupled modules
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+---
+
+### 4. Create GitLab Issues
+
+For each finding, the agent automatically creates:
+
+* Issue title
+* Detailed description
+* Labels such as `technical-debt` and `high`
+
+---
+
+## Example Output
+
+Instead of:
+
+> "Your code needs refactoring..."
+
+You get:
+
+* `Refactor UserService.ts (High Complexity)`
+* `Add tests for PaymentProcessor.ts`
+* `Reduce coupling in OrderManager.ts`
+
+---
+
+## Architecture
+
+```
+User Command
+   ↓
+GitLab Duo Agent Flow
+   ↓
+GitLab Orbit Query
+   ↓
+AI Analysis (LLM)
+   ↓
+GitLab Issue Creation
+```
+
+---
+
+## Tech Stack
+
+* GitLab Duo Agent Platform (YAML-based flows)
+* LLM-powered analysis
+* GitLab Orbit (repository intelligence)
+* GitLab Issue API
+
+---
+
+## Key Features
+
+* One-command execution
+* Deep repository understanding via Orbit
+* Automated issue generation
+* High-impact prioritization
+* Seamless GitLab integration
+
+---
+
+## Use Cases
+
+* Onboarding into legacy codebases
+* Continuous technical debt monitoring
+* Sprint planning automation
+* Codebase health audits
+
+---
+
+## Why This Matters
+
+Technical debt slows down development, introduces bugs, and increases maintenance costs.
+
+Technical Debt Hunter transforms this from:
+
+Manual, reactive work
+to
+Automated, proactive insights
+
+---
+
+## Hackathon Context
+
+Built for the **GitLab Transcend Hackathon (Showcase Track)**.
+
+This project demonstrates:
+
+* Meaningful use of **GitLab Orbit**
+* A functional **AI agent workflow**, not just chat
+* Real-world developer impact
+
+---
+
+## Future Improvements
+
+* Risk scoring system
+* Trend tracking over time
+* Continuous monitoring through CI integration
+* Smarter dependency analysis
+* Team-based ownership insights
+
+---
+
+## Demo
+
+Run the agent and watch GitLab issues appear automatically.
+
+---
+
+## Contributors
+
+* Your Team Name Here
+
+---
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+MIT (or specify your license)
+
+---
+
+## Final Note
+
+Technical Debt Hunter does not just find problems; it turns them into actionable work instantly.
